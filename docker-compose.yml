@@ -2,7 +2,7 @@ version: "3"
 services:
   squid-alpine-ssl:
     image: mountainpass/squid-npm
-    container_name: cache
+    container_name: squid-npm
     build: .
     ports:
       - "3128:3128"
