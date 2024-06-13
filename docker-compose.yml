@@ -1,18 +1,22 @@
 version: "3"
 services:
   squid-alpine-ssl:
-    image: alatas/squid-alpine-ssl:latest
+    image: mountainpass/squid-npm
+    container_name: cache
+    build: .
+    ports:
+      - "3128:3128"
+      - "4128:4128"
     environment:
       - CN=squid.local
       - O=squid
       - OU=squid
-      - C=US
-    ports:
-      - "3128:3128"
-      - "4128:4128"
+      - C=AU
     volumes:
-      - ./log:/var/log/
-      - ./conf/squid.conf:/etc/squid/squid.conf
-      - ./cache:/var/cache
-      - ./cert:/etc/squid-cert
-    restart: always
+      - ./example:/squid
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-file: 5
+        max-size: 10m

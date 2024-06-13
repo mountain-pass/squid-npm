@@ -1,0 +1,27 @@
+#
+# Hooked configuration file
+# See https://github.com/mountain-pass/hooked for more information.
+#
+# To install the cli: npm i -g @mountainpass/hooked-cli
+# To enable yaml validation: https://github.com/mountain-pass/hooked/blob/main/_CONFIG.md#recommended---enable-yaml-schema
+#
+
+env:
+  default:
+    SKIP_VERSION_CHECK: 1
+    DOCKER_IMAGE: mountainpass/squid-npm
+
+scripts:
+  build:
+    $cmd: |
+      docker buildx build \
+        --no-cache \
+        --platform linux/amd64,linux/arm64/v8 \
+        --tag "${DOCKER_IMAGE}" \
+        --file Dockerfile \
+        --push \
+        .
+
+  build-local:
+    $cmd: |
+      docker compose build --no-cache

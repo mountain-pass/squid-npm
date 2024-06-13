@@ -3,3 +3,5 @@ log/squid
 cert/*.der
 cert/*.pem
 .DS_Store
+example/*
+!example/squid.conf
