@@ -1,6 +1,7 @@
 version: "3"
+
 services:
-  squid-alpine-ssl:
+  squid-npm:
     image: mountainpass/squid-npm
     container_name: squid-npm
     build: .
