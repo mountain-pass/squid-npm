@@ -31,7 +31,7 @@ docker compose up
 ## Configure NPM proxy
 
 ```sh
-npm config set http-proxy http://localhost:3128
+npm config set proxy http://localhost:3128
 npm config set https-proxy http://localhost:4128
 npm config set cafile "$(pwd)/example/certs/CA.pem"
 ```
